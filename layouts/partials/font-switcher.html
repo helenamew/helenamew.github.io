@@ -1,0 +1,44 @@
+{{ if and .Site.Params.fontSwitcher .Site.Params.fonts }}
+{{/* One row per font group, in the order groups first appear in params.fonts */}}
+{{ $groups := slice }}
+{{ range .Site.Params.fonts }}{{ if not (in $groups .group) }}{{ $groups = $groups | append .group }}{{ end }}{{ end }}
+{{ $default := (index .Site.Params.fonts 0).name }}
+<div class="font-switcher" role="group" aria-label="Choose a font">
+  <button type="button" class="font-toggle" aria-expanded="false" aria-label="Show font options">Aa</button>
+  {{ range $g := $groups }}
+    <div class="font-row">
+      {{ range where $.Site.Params.fonts "group" $g }}
+        <button type="button" data-font="{{ .name }}" aria-pressed="{{ if eq .name $default }}true{{ else }}false{{ end }}" style="font-family: {{ .stack | safeCSS }}">{{ .name }}</button>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+<script>
+  (function () {
+    var switcher = document.querySelector(".font-switcher");
+    var toggle = switcher.querySelector(".font-toggle");
+    var buttons = switcher.querySelectorAll("button[data-font]");
+
+    toggle.addEventListener("click", function () {
+      var open = switcher.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    var saved = null;
+    try { saved = localStorage.getItem("font"); } catch (e) {}
+
+    function select(name) {
+      if (!window.siteFonts[name]) return;
+      document.documentElement.style.setProperty("--font", window.siteFonts[name]);
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.font === name ? "true" : "false"); });
+    }
+
+    if (saved) select(saved);
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        select(b.dataset.font);
+        try { localStorage.setItem("font", b.dataset.font); } catch (e) {}
+      });
+    });
+  })();
+</script>
+{{ end }}

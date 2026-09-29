@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="panel">
+    <hr class="rule rule-top">
+    <img class="portrait" src="{{ "/images/helena.jpg" | relURL }}" alt="Photo of {{ .Site.Title }}">
+    <h1 class="name">{{ .Site.Title }}</h1>
+  </div>
+
+  <div class="hero-right">
+    <div class="bio">{{ .Content }}</div>
+    <hr class="rule rule-bio">
+  </div>
+</section>
+
+<nav class="buttons">
+  {{ partial "nav-buttons.html" . }}
+</nav>
+{{ end }}

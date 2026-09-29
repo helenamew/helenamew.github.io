@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+{{ if hugo.IsProduction }}
+  <meta name="robots" content="index, follow">
+{{ else }}
+  <meta name="robots" content="noindex, nofollow">
+{{ end }}
+
+{{ with .Site.Params.fonts }}
+  {{/* Load the default font, or every font when the switcher is on */}}
+  {{ $load := cond $.Site.Params.fontSwitcher . (first 1 .) }}
+  {{ $google := slice }}
+  {{ range $load }}{{ with .google }}{{ $google = $google | append . }}{{ end }}{{ end }}
+  {{ with $google }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ delimit . "&family=" | safeURL }}&display=swap">
+  {{ end }}
+  <style>:root { --font: {{ (index . 0).stack | safeCSS }}; }</style>
+  {{ if $.Site.Params.fontSwitcher }}
+    {{ $stacks := dict }}
+    {{ range . }}{{ $stacks = merge $stacks (dict .name .stack) }}{{ end }}
+    <script>
+      // Apply the font chosen in the switcher before the page renders
+      window.siteFonts = {{ $stacks | jsonify | safeJS }};
+      try {
+        var saved = localStorage.getItem("font");
+        if (saved && window.siteFonts[saved]) document.documentElement.style.setProperty("--font", window.siteFonts[saved]);
+      } catch (e) {}
+    </script>
+  {{ end }}
+{{ end }}
+<link rel="stylesheet" href="{{ "/css/site.css" | relURL }}">
+<link rel="icon" href="{{ "/favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "/favicon-32.png" | relURL }}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ "/apple-touch-icon.png" | relURL }}">
+
+{{ with .OutputFormats.Get "RSS" }}
+  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+{{ end }}

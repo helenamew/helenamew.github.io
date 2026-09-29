@@ -1,0 +1,508 @@
+/* Site design, layered over the Mini theme's style.css (which still supplies Markdown content styles). */
+
+:root {
+  --ink: #000;
+  --muted: #666;
+  --rule: 5px;
+  --dash: 14px;
+  --gap: 10px;
+  --dashes: repeating-linear-gradient(to right, var(--ink) 0 var(--dash), transparent var(--dash) calc(var(--dash) + var(--gap)));
+  --accent: #f2b13d;
+  --panel-grey: #ebebeb;
+  --underline: var(--accent);
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font, 'Helvetica Neue', Helvetica, Arial, sans-serif); /* --font set from params.font */
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 4px;
+  text-decoration-skip-ink: none;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+a:hover {
+  color: var(--underline);
+  text-decoration-color: var(--ink);
+}
+
+hr.rule {
+  height: var(--rule);
+  background: var(--dashes);
+  border: 0;
+  margin: 0;
+}
+
+/* ---------- Post content (Markdown) ---------- */
+
+p {
+  margin-block: 1.5em;
+  overflow-wrap: anywhere;
+}
+
+blockquote {
+  margin: 5px 0;
+  padding-left: 1em;
+  border-left: 3px solid #eee;
+  color: #757575;
+}
+
+hr {
+  display: block;
+  border: none;
+  height: 2px;
+  margin: 40px auto;
+  background: #eee;
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+  margin: 40px 0;
+  border-collapse: collapse;
+  line-height: 1.5em;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 15px;
+  border: 1px solid #dadadc;
+}
+th {
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+tr:nth-child(odd) > td {
+  background: #fcfcfc;
+}
+
+code,
+pre {
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+p code {
+  font-size: inherit;
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 0 2px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+pre {
+  padding: 7px;
+  overflow-x: auto;
+}
+
+/* ---------- Homepage ---------- */
+
+.home .main {
+  --p: clamp(200px, 17vw, 260px); /* photo size; panel proportions scale from it */
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 260px calc(var(--p) * 0.3 + 16px) 0; /* sides leave room for the grey box */
+  box-sizing: border-box;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: auto min(32vw, 520px); /* bio column width */
+  column-gap: calc(var(--p) * 0.22);
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  /* The grey box overhangs the right by 0.27p; shift left by half so both squares centre on the page */
+  left: calc(var(--p) * -0.135);
+}
+
+/* Light grey box behind the bio, tucked under the right part of the panel */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--p) * -0.2);
+  bottom: calc(var(--p) * -0.27);
+  left: calc(var(--p) * 0.7);
+  right: calc(var(--p) * -0.27);
+  background: var(--panel-grey);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  isolation: isolate;
+  padding: calc(var(--p) * 0.15) calc(var(--p) * 0.19) calc(var(--p) * 0.12) calc(var(--p) * 0.375);
+}
+
+/* Background as its own layer so it can shrink independently of the photo */
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transition: transform 0.30s ease;
+}
+
+hr.rule-top {
+  --target: calc(var(--p) * 0.68);
+  width: var(--target);
+  margin: 0 0 calc(var(--p) * 0.14);
+}
+
+.portrait {
+  display: block;
+  width: var(--p);
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 0.30s ease;
+}
+
+/* Hover on the panel: photo grows, panel shrinks slightly, name turns white */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .panel:hover .portrait {
+    transform: scale(1.04);
+  }
+  .panel:hover::before {
+    transform: scale(0.96);
+  }
+}
+@media (hover: hover) {
+  .panel:hover .name {
+    color: #fff;
+  }
+}
+
+.name {
+  margin: calc(var(--p) * 0.1) 0 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: color 0.1s ease;
+}
+
+.bio {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.bio p {
+  margin: 0 0 1em;
+}
+.bio p:last-child {
+  margin-bottom: 0;
+}
+
+hr.rule-bio {
+  --target: 80%;
+  width: var(--target);
+  margin: calc(var(--p) * 0.16) 0 0 4px;
+}
+
+/* Round each line's width up so it ends on a whole dash rather than a cut-off one */
+@supports (width: round(up, 1px, 1px)) {
+  hr.rule {
+    width: calc(round(up, calc(var(--target) + var(--gap)), calc(var(--dash) + var(--gap))) - var(--gap));
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 190px);
+  justify-content: center;
+  gap: 24px;
+  margin: calc(var(--p) * 0.27 + 64px) auto 0;
+}
+
+.buttons .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border: 5px solid var(--c);
+  background: #fff;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 1;
+  transition: background-color 0.15s, color 0.15s;
+}
+.buttons .button:hover {
+  background: var(--c);
+  color: #fff;
+  opacity: 1;
+}
+
+.site-footer {
+  text-align: center;
+  margin: 76px 0 80px;
+  font-weight: 300;
+}
+.site-footer a {
+  text-decoration: none;
+}
+.home .site-footer {
+  margin: 56px 0 80px;
+  padding: 0 40px;
+  font-size: 22px;
+}
+
+/* ---------- Inner pages ---------- */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 36px;
+}
+
+.home-link {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Small version of the homepage buttons, top right of inner pages */
+.menu {
+  display: flex;
+  gap: 10px;
+}
+.menu .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  height: 30px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 3px solid var(--c);
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+.menu .button:hover,
+.menu .button.is-current {
+  background: var(--c);
+  color: #fff;
+}
+
+.inner .main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+  box-sizing: border-box;
+}
+
+.page-title {
+  color: var(--page-colour, var(--ink));
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+.page-title::after {
+  content: "";
+  display: block;
+  width: 86px; /* 4 full dashes: 4 × 14px + 3 × 10px */
+  height: var(--rule);
+  background: var(--dashes);
+  margin-top: 18px;
+}
+
+.page-date {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.page .content {
+  margin-top: 28px;
+}
+.page .content h2,
+.page .content h3 {
+  font-weight: 700;
+}
+
+.page-tags {
+  margin-top: 36px;
+  font-size: 15px;
+}
+.page-tags a {
+  margin-right: 10px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+}
+.post-list li {
+  margin-bottom: 28px;
+}
+.post-title {
+  font-size: 21px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.post-date {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+.post-summary {
+  margin: 6px 0 0;
+}
+
+.inner .site-footer {
+  margin-top: 100px;
+  font-size: 17px;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+  .home .main {
+    --p: 52vw;
+    width: auto;
+    padding: 0 20px;
+  }
+
+  /* Stacked version of the desktop layout: panel top-left, grey box offset behind the bio */
+  .hero {
+    grid-template-columns: 1fr;
+    left: 0;
+  }
+  .hero::before {
+    top: calc(var(--p) * 1.1); /* overlaps the lower part of the panel */
+    bottom: 0;
+    left: 6vw;
+    right: -20px; /* bleed to the screen edge */
+  }
+
+  .panel {
+    justify-self: start;
+    margin-left: -20px; /* cancel the page padding so the panel meets the left edge */
+  }
+
+  .name {
+    font-size: 24px;
+  }
+
+  .hero-right {
+    padding: 28px 36px 32px calc(6vw + 32px);
+  }
+  .bio {
+    font-size: 17px;
+  }
+  hr.rule-bio {
+    margin: 36px 0 0;
+  }
+
+  .buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 32px 0 0;
+  }
+  .buttons .button {
+    height: 42px;
+    border-width: 3px;
+    font-size: 15px;
+  }
+
+  .home .site-footer {
+    font-size: 16px;
+    padding: 0 20px;
+    margin: 28px 0 40px;
+  }
+
+  .site-header {
+    padding: 20px;
+  }
+  .menu {
+    gap: 8px;
+  }
+  .menu .button {
+    min-width: 0;
+    height: 28px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  .inner .main {
+    padding-top: 16px;
+  }
+  .page-title {
+    font-size: 28px;
+  }
+}
+
+/* ---------- Font switcher ---------- */
+
+.font-switcher {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px;
+  background: #fff;
+  border: 2px solid var(--ink);
+}
+.font-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.font-switcher button {
+  border: 0;
+  background: none;
+  padding: 4px 9px;
+  color: var(--ink);
+  font-size: 13px;
+  cursor: pointer;
+}
+.font-switcher button:hover {
+  background: var(--panel-grey);
+}
+.font-switcher button[aria-pressed="true"] {
+  background: var(--accent);
+}
+
+/* On phones the picker collapses to an "Aa" tab */
+.font-toggle {
+  display: none;
+}
+@media (max-width: 700px) {
+  .font-switcher .font-toggle {
+    display: block;
+    align-self: flex-start;
+    font-weight: 700;
+  }
+  .font-switcher:not(.is-open) .font-row {
+    display: none;
+  }
+}

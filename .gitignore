@@ -1,0 +1,8 @@
+/public/
+/resources/_gen/
+.hugo_build.lock
+.DS_Store
+
+# Local source files (original photos, design mockups)
+/photo*
+/mockup.pages

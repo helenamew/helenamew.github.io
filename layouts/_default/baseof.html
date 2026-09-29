@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+  <head>
+    <title>{{ block "title" . }}{{ if not .IsHome }}{{ with .Title }}{{ . }} | {{ end }}{{ end }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "head.html" . }}
+  </head>
+
+  {{/* Page colour: set with `colour:` in a page's front matter; posts inherit their section's colour */}}
+  {{ $colour := .Params.colour | default .CurrentSection.Params.colour }}
+  <body class="{{ if .IsHome }}home{{ else }}inner{{ end }}"{{ with $colour }} style="--page-colour: {{ . | safeCSS }}"{{ end }}>
+    {{ if not .IsHome }}
+      <header class="site-header">
+        <a class="home-link" href="{{ "/" | relURL }}">← {{ .Site.Title }}</a>
+        <nav class="menu">
+          {{ partial "nav-buttons.html" . }}
+        </nav>
+      </header>
+    {{ end }}
+
+    <main class="main">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "site-footer.html" . }}
+    {{ partial "font-switcher.html" . }}
+  </body>
+</html>

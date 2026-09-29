@@ -1,0 +1,5 @@
+{{ with .Site.Params.email }}
+<footer class="site-footer">
+  <a href="mailto:{{ . }}">{{ . }}</a>
+</footer>
+{{ end }}

@@ -1,0 +1,6 @@
+{{/* Section buttons from params.homeButtons; used on the homepage and in the inner-page menu. Context: the current page. */}}
+{{ $here := .RelPermalink }}
+{{ range .Site.Params.homeButtons }}
+  {{ $url := .url | relURL }}
+  <a class="button{{ if hasPrefix $here $url }} is-current{{ end }}" href="{{ $url }}" style="--c: {{ .colour | safeCSS }}">{{ .name }}</a>
+{{ end }}
