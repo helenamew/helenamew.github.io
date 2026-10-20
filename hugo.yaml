@@ -18,7 +18,8 @@ markup:
 params:
   author: Helena Ward
   description: Helena Ward — philosophy PhD student at the University of Oxford.
-  email: helena.ward@phil.ox.ac.uk
+  email: helena.ward@philosophy.ox.ac.uk
+  linkedin: https://www.linkedin.com/in/helena-ward-/ # shown as an icon in the footer
 
   # Buttons on the homepage and inner-page menu (colour = outline colour)
   homeButtons:

@@ -275,8 +275,23 @@ hr.rule-bio {
   margin: 76px 0 80px;
   font-weight: 300;
 }
+.site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
 .site-footer a {
   text-decoration: none;
+}
+.footer-icon {
+  display: inline-flex;
+  font-size: 1.15em;
+  transition: color 0.15s;
+}
+.footer-icon:hover {
+  color: var(--page-colour, var(--accent));
 }
 .home .site-footer {
   margin: 56px 0 80px;
