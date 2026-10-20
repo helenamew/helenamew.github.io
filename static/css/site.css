@@ -400,6 +400,94 @@ hr.rule-bio {
   font-size: 17px;
 }
 
+/* ---------- Publication cards (Research page) ---------- */
+
+.pubs {
+  margin-top: 56px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 62px; /* 3 full dashes */
+  height: var(--rule);
+  background: var(--dashes);
+  margin-top: 14px;
+}
+
+.pub-card {
+  border: 3px solid var(--page-colour, var(--ink));
+  padding: 22px 26px;
+  margin-bottom: 24px;
+}
+.pub-card--under-review,
+.pub-card--in-progress {
+  border-style: dashed;
+}
+
+.pub-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+.pub-authors,
+.pub-venue {
+  margin: 6px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.pub-authors {
+  color: var(--muted);
+}
+.pub-venue p {
+  display: inline;
+  margin: 0;
+}
+
+.pub-abstract {
+  margin-top: 14px;
+  font-size: 15px;
+}
+.pub-abstract summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  width: fit-content;
+}
+.pub-abstract p {
+  margin: 8px 0 0;
+  line-height: 1.6;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border: 3px solid var(--page-colour, var(--ink));
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+.pub-link:hover {
+  background: var(--page-colour, var(--ink));
+  color: #fff;
+}
+
 /* ---------- Mobile ---------- */
 
 @media (max-width: 700px) {

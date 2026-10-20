@@ -1,6 +1,7 @@
 ---
 title: Research
 colour: "#e27e35"
+publications: true # show the cards from data/publications.yaml
 ---
 
 I'm a DPhil candidate in Philosophy at University of Oxford, funded by the [Institute for Ethics in AI](https://www.oxford-aiethics.ox.ac.uk/). My DPhil research, supervised by Dr Carissa Véliz and Professor Thomas Douglas, examines the relationship between intimacy and privacy.

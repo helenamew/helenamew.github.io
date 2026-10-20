@@ -10,6 +10,10 @@
     {{ .Content }}
   </div>
 
+  {{ if .Params.publications }}
+    {{ partial "publications.html" . }}
+  {{ end }}
+
   {{ with .Params.tags }}
     <div class="page-tags">
       {{ range . }}

@@ -1,0 +1,21 @@
+{{/* Publication cards from data/publications.yaml. Shown on pages with `publications: true`. */}}
+{{ with site.Data.publications }}
+  {{ with .published }}
+    <section class="pubs">
+      <h2 class="section-title">Publications</h2>
+      {{ range . }}{{ partial "pub-card.html" (dict "pub" . "status" "published") }}{{ end }}
+    </section>
+  {{ end }}
+  {{ with .under_review }}
+    <section class="pubs">
+      <h2 class="section-title">Under review</h2>
+      {{ range . }}{{ partial "pub-card.html" (dict "pub" . "status" "under-review") }}{{ end }}
+    </section>
+  {{ end }}
+  {{ with .in_progress }}
+    <section class="pubs">
+      <h2 class="section-title">In progress</h2>
+      {{ range . }}{{ partial "pub-card.html" (dict "pub" . "status" "in-progress") }}{{ end }}
+    </section>
+  {{ end }}
+{{ end }}

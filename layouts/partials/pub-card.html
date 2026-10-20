@@ -1,0 +1,19 @@
+{{ $p := .pub }}
+<article class="pub-card pub-card--{{ .status }}">
+  <h3 class="pub-title">{{ $p.title }}</h3>
+  {{ with $p.authors }}<p class="pub-authors">{{ . }}</p>{{ end }}
+  {{ if or $p.venue $p.year }}
+    <p class="pub-venue">{{ with $p.venue }}{{ . | markdownify }}{{ end }}{{ with $p.year }} ({{ . }}){{ end }}</p>
+  {{ end }}
+  {{ with $p.abstract }}
+    <details class="pub-abstract">
+      <summary>Abstract</summary>
+      {{ . | markdownify | printf "<p>%s</p>" | safeHTML }}
+    </details>
+  {{ end }}
+  {{ with $p.links }}
+    <div class="pub-links">
+      {{ range . }}<a class="pub-link" href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a>{{ end }}
+    </div>
+  {{ end }}
+</article>
