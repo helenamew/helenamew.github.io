@@ -2,5 +2,5 @@
 {{ $here := .RelPermalink }}
 {{ range .Site.Params.homeButtons }}
   {{ $url := .url | relURL }}
-  <a class="button{{ if hasPrefix $here $url }} is-current{{ end }}" href="{{ $url }}" style="--c: {{ .colour | safeCSS }}">{{ .name }}</a>
+  <a class="button{{ if hasPrefix $here $url }} is-current{{ end }}" href="{{ $url }}"{{ with .download }} download="{{ . }}"{{ end }} style="--c: {{ .colour | safeCSS }}">{{ .name }}</a>
 {{ end }}

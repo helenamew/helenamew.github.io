@@ -22,7 +22,8 @@ Push to `main` and the site rebuilds automatically (see `.github/workflows/hugo.
 ## Other things to edit
 
 - Homepage bio: `content/_index.md`
-- Research / CV pages: `content/research.md`, `content/cv.md`
+- Research page: `content/research.md`
+- CV: replace the PDF in `static/` and update the CV button's `url` in `hugo.yaml`
 - Page colour (title and line): add `colour: "#e27e35"` to a page's header; posts use their section's colour (set in `content/writing/_index.md`)
 - Email address and homepage buttons (labels, links, colours): `hugo.yaml`
 - Profile photo: `static/images/helena.jpg` (square)

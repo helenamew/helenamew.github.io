@@ -29,5 +29,6 @@ params:
       url: /writing/
       colour: "#a93226"
     - name: CV
-      url: /cv/
+      url: /CV_07_10_2026.pdf
+      download: Helena-Ward-CV.pdf # downloads the file under this name instead of opening a page
       colour: "#f2b13d"
