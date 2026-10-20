@@ -20,46 +20,7 @@ params:
   description: Helena Ward — philosophy PhD student at the University of Oxford.
   email: helena.ward@phil.ox.ac.uk
 
-  # Site fonts. The first is the default; the others are offered by the font switcher.
-  # stack: CSS font-family value. google: the part after "family=" in a fonts.google.com embed link.
-  # group: fonts with the same group share a row in the switcher.
-  fonts:
-    - name: Original
-      group: sans
-      stack: "'Helvetica Neue', Helvetica, Arial, sans-serif"
-    - name: Bricolage
-      group: sans
-      stack: "'Bricolage Grotesque', sans-serif"
-      google: "Bricolage+Grotesque:opsz,wght@12..96,300..700"
-    - name: Space Grotesk
-      group: sans
-      stack: "'Space Grotesk', sans-serif"
-      google: "Space+Grotesk:wght@300..700"
-    - name: Syne
-      group: sans
-      stack: "'Syne', sans-serif"
-      google: "Syne:wght@400..800"
-    - name: EB Garamond
-      group: serif
-      stack: "'EB Garamond', Georgia, serif"
-      google: "EB+Garamond:ital,wght@0,400..800;1,400..800"
-    - name: Libre Caslon
-      group: serif
-      stack: "'Libre Caslon Text', Georgia, serif"
-      google: "Libre+Caslon+Text:ital,wght@0,400;0,700;1,400"
-    - name: Cormorant
-      group: serif
-      stack: "'Cormorant Garamond', Georgia, serif"
-      google: "Cormorant+Garamond:ital,wght@0,300..700;1,300..700"
-    - name: Newsreader
-      group: serif
-      stack: "'Newsreader', Georgia, serif"
-      google: "Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800"
-
-  # Show the font picker (bottom left). Set to false to hide it and just use the first font.
-  fontSwitcher: true
-
-  # Buttons on the homepage (colour = outline colour)
+  # Buttons on the homepage and inner-page menu (colour = outline colour)
   homeButtons:
     - name: Research
       url: /research/

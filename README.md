@@ -26,7 +26,7 @@ Push to `main` and the site rebuilds automatically (see `.github/workflows/hugo.
 - Page colour (title and line): add `colour: "#e27e35"` to a page's header; posts use their section's colour (set in `content/writing/_index.md`)
 - Email address and homepage buttons (labels, links, colours): `hugo.yaml`
 - Profile photo: `static/images/helena.jpg` (square)
-- Fonts and the font picker: `fonts` and `fontSwitcher` in `hugo.yaml`
+- Font: Syne, self-hosted in `static/fonts/` and set as `--font` at the top of `static/css/site.css`
 - Favicon: `static/favicon.svg` (plus `favicon-32.png` and `apple-touch-icon.png`)
 - Design: `layouts/` (page templates) and `static/css/site.css` (styles)
 
