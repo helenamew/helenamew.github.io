@@ -6,3 +6,6 @@
 # Local source files (original photos, design mockups)
 /photo*
 /mockup.pages
+/*.docx
+~$*
+/drafts/
