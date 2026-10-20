@@ -2,19 +2,35 @@
 
 Personal website for Helena Ward, built with [Hugo](https://gohugo.io/) (custom templates, no theme) and hosted on GitHub Pages.
 
-## Adding a post
+## Adding writing
 
-Create a Markdown file in `content/writing/` with a header like this:
+Each piece is a Markdown file in `content/writing/`; the file name becomes its address (`onion-axiom.md` → `/writing/onion-axiom/`). The Writing page lists them newest first, showing the month and year.
+
+**Linked piece** (most writing; no page on this site, the title and venue link straight to the original):
 
 ```markdown
 ---
-title: My post title
-date: 2026-09-28
-tags: [privacy, ethics]
-draft: false
+title: The Onion Axiom for Artificial Intelligence
+date: 2025-06-12
+venue: Institute for Ethics in AI
+authors: with Imogen Rivers   # optional
+original: https://link-to-the-original-post
+---
+```
+
+Use `pdf: https://link-to-the.pdf` instead of `original:` for a piece published as a PDF (it also gets a PDF tag).
+
+**Paywalled piece** (gets its own page with the author version; the venue still links to the original): same header, plus the text below it:
+
+```markdown
+---
+title: Accountability Gaps in Generative AI
+date: 2024-04-17
+venue: The EI Network
+original: https://link-to-the-paywalled-post
 ---
 
-Post text goes here.
+The author version goes here.
 ```
 
 Push to `main` and the site rebuilds automatically (see `.github/workflows/hugo.yaml`).

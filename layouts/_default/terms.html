@@ -1,10 +1,17 @@
 {{ define "main" }}
 <section class="page">
   <h1 class="page-title">{{ .Title }}</h1>
-  <ul class="post-list">
+  <ol class="entries">
     {{ range .Data.Terms.ByCount }}
-      <li><a class="post-title" href="{{ .Page.RelPermalink }}">#{{ .Page.Title }}</a> <span class="post-date">{{ .Count }}</span></li>
+      <li class="entry">
+        <div class="entry-main">
+          <a class="entry-title" href="{{ .Page.RelPermalink }}">#{{ .Page.Title }}</a>
+          <p class="entry-meta">{{ .Count }} {{ cond (eq .Count 1) "piece" "pieces" }}</p>
+        </div>
+      </li>
+    {{ else }}
+      <li class="entry entry--empty">No tags yet.</li>
     {{ end }}
-  </ul>
+  </ol>
 </section>
 {{ end }}

@@ -1,11 +1,28 @@
-<ul class="post-list">
+{{/* Writing index. Pieces with a body (e.g. paywalled posts) link to their own page;
+     pieces with no body link straight out to their `pdf` or `original` link. */}}
+<ol class="entries">
   {{ range . }}
-    <li>
-      <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-      <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
-      {{ with .Summary }}<p class="post-summary">{{ . | plainify | htmlUnescape | truncate 220 }}</p>{{ end }}
+    {{ $page := . }}
+    {{ $external := .Params.pdf | default .Params.original }}
+    {{ $linkOnly := and $external (not .Content) }}
+    <li class="entry">
+      <div class="entry-main">
+        {{ if $linkOnly }}
+          <a class="entry-title" href="{{ $external }}" target="_blank" rel="noopener">{{ .Title }}</a>
+        {{ else }}
+          <a class="entry-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ end }}
+        <p class="entry-meta">
+          <time class="entry-date" datetime="{{ .Date.Format "2006-01" }}">{{ .Date.Format "January 2006" }}</time>
+          {{ with .Params.venue }}
+            {{ with $page.Params.original }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $page.Params.venue }} ↗</a>{{ else }}<span>{{ . }}</span>{{ end }}
+          {{ end }}
+          {{ with .Params.authors }}<span class="entry-authors">{{ . }}</span>{{ end }}
+          {{ if and $linkOnly .Params.pdf }}<a class="entry-tag" href="{{ .Params.pdf }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+        </p>
+      </div>
     </li>
   {{ else }}
-    <li class="post-empty">Nothing here yet.</li>
+    <li class="entry entry--empty">Nothing here yet.</li>
   {{ end }}
-</ul>
+</ol>

@@ -8,7 +8,7 @@ taxonomies:
   tag: tags
 
 permalinks:
-  writing: /writing/:slug/
+  writing: /writing/:filename/ # post address comes from its file name
 
 markup:
   goldmark:

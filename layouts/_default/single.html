@@ -3,7 +3,13 @@
   <h1 class="page-title">{{ .Title }}</h1>
 
   {{ if eq .Section "writing" }}
-    <div class="page-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time></div>
+    <div class="page-date">
+      <time datetime="{{ .Date.Format "2006-01" }}">{{ .Date.Format "January 2006" }}</time>
+      {{ with .Params.authors }}· {{ . }}{{ end }}
+    </div>
+    {{ with .Params.original }}
+      <p class="page-original">Originally published at <a href="{{ . }}" target="_blank" rel="noopener">{{ $.Params.venue | default "the original site" }} ↗</a></p>
+    {{ end }}
   {{ end }}
 
   <div class="content">

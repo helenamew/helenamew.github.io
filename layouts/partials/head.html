@@ -1,4 +1,9 @@
 <meta charset="utf-8">
+{{ $external := .Params.pdf | default .Params.original }}
+{{ if and .IsPage $external (not .Content) }}
+  {{/* Writing with no body has no page of its own: redirect to its external link */}}
+  <meta http-equiv="refresh" content="0; url={{ $external }}">
+{{ end }}
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
 {{ if hugo.IsProduction }}
