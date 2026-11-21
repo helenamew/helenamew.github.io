@@ -14,7 +14,7 @@
   {{ end }}
   {{ with .in_progress }}
     <section class="pubs">
-      <h2 class="section-title">In progress</h2>
+      <h2 class="section-title">Work in progress</h2>
       {{ range . }}{{ partial "pub-card.html" (dict "pub" . "status" "in-progress") }}{{ end }}
     </section>
   {{ end }}

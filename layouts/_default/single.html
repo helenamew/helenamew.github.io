@@ -1,5 +1,10 @@
 {{ define "main" }}
 <article class="page">
+  {{ with .Params.intro_title }}<h2 class="page-title">{{ . }}</h2>{{ end }}
+  {{ with .Params.intro }}
+    <div class="content page-intro">{{ . | markdownify }}</div>
+  {{ end }}
+
   <h1 class="page-title">{{ .Title }}</h1>
 
   {{ if eq .Section "writing" }}

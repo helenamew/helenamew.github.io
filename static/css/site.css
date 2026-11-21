@@ -356,6 +356,9 @@ hr.rule-bio {
   line-height: 1.15;
   margin: 0 0 20px;
 }
+.page-intro + .page-title {
+  margin-top: 80px;
+}
 .page-title::after {
   content: "";
   display: block;

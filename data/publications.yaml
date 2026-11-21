@@ -1,12 +1,12 @@
 # Publications shown on the Research page (as cards).
 # Each entry: title, authors (co-authors, optional), venue (Markdown allowed), year,
 # abstract (optional, Markdown allowed), links (optional list of label + url).
-# Lists: published, under_review, in_progress.
+# Lists: published, under_review (optional), in_progress.
 
 published:
   - title: A Timing Problem for Instrumental Convergence
     authors: Rhys Southan, Helena Ward, and Jen Semler
-    venue: "*Philosophical Studies*"
+    venue: "Philosophical Studies"
     year: 2025
     abstract: >-
       Those who worry about a superintelligent AI destroying humanity often appeal to the instrumental convergence thesis—the claim that even if we don’t know what a superintelligence’s ultimate goals will be, we can expect it to pursue various instrumental goals which are useful for achieving most ends. In this paper, we argue that one of these proposed goals is mistaken. We argue that instrumental goal preservation—the claim that a rational agent will tend to preserve its goals because that makes it better at achieving its goals—is false on the basis of the timing problem: an agent which abandons or otherwise changes its goal does not thereby fail to take a required means for achieving a goal it has. Our argument draws on the distinction between means-rationality (adopting suitable means to achieve an end) and ends-rationality (choosing one’s ends based on reasons). Because proponents of the instrumental convergence thesis are concerned with means-rationality, we argue, they cannot avoid the timing problem. After defending our argument against several objections, we conclude by considering the implications our argument has for the rest of the instrumental convergence thesis and for AI safety more generally.
@@ -18,32 +18,28 @@ published:
       - label: Reflective Altruism blog post
         url: https://reflectivealtruism.com/2025/08/22/papers-i-learned-from-part-6-a-timing-problem-for-instrumental-convergence/
 
-  - title: "The Origins of an Industry: The Making of Responsible AI in Europe (Book chapter)"
+  - title: "The Origins of an Industry: The Making of Responsible AI in Europe"
     authors: Olivia Gambelin and Helena Ward
-    venue: "*Responsible AI in Action: Insights from Singapore and Europe, World Scientific Publishers*"
+    venue: "Chapter 9 in Responsible AI in Action: Insights from Singapore and Europe, World Scientific Publishers"
     year: 2026
     abstract: >-
-      Responsible AI in Action explores how different governance cultures, legal frameworks, and innovation ecosystems translate the principles of Responsible AI into measurable outcomes. Drawing on real-world case studies, policy analysis, and expert insights from Singapore and Europe, it examines how both regions have sought to balance technological progress with human centric values, accountability, and trust in AI systems.
+      This chapter provides an overview of the journey of Responsible AI (RAI) in Europe, from its origins in academia, to its solidification as an industry standard. We identify and examine key characteristics of three key phases: the AI Ethics Period, Emergence of Responsible AI Phase, and the AI Governance Phase. Marking the transitions between these phases are two key turning points: COVID-19 and generative AI, throughout, we explore how environmental and technical advancements spurred and shaped the journey of RAI. How did RAI emerge as the industry standard? Which factors encouraged the focus on risk-based regulation? And how might the current phase of RAI limit its potential?
+    links:
+      - label: Book
+        url: https://www.waterstones.com/book/responsible-ai-in-action-insights-from-singapore-and-europe/anton-ravindran/venky-shankararaman/9789819840977
+
+  - title: Conversational AIs and Mnemonic Distortion
+    venue: "Philosophy and Technology"
+    year: 2026
     links:
       - label: Published article
-        url: https://doi.org/10.1142/15062
-
-under_review:
-  - title: What Makes Interactions Intimate?
-    abstract: >-
-    venue: "*The Journal of Ethics*"
-    links:
-
-  - title: Conversational AI and Mnemonic Distortion
-    abstract: >-
-    venue: "*Philosophy and Technology*"
-    links:
+        url: https://link.springer.com/article/10.1007/s13347-026-01229-8
 
 in_progress:
-  - title: Gossip and epistemology
+  - title: An account of what makes interactions intimate
 
-  - title: The epistemology of privacy
+  - title: A paper on gossip, privacy, and epistemology
 
-  - title: The ethics of influence by griefbots
+  - title: A paper on the ethics of influence by conversational AIs
 
-  - title: The importance of privacy in public
+  - title: A paper on the importance of privacy in public
