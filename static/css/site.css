@@ -129,17 +129,17 @@ pre {
 /* ---------- Homepage ---------- */
 
 .home .main {
-  --p: clamp(200px, 17vw, 260px); /* photo size; panel proportions scale from it */
+  --p: clamp(160px, 13.5vw, 210px); /* photo size; panel proportions scale from it */
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
-  padding: 260px calc(var(--p) * 0.3 + 16px) 0; /* sides leave room for the grey box */
+  padding: calc(var(--p) * 0.2 + 100px) calc(var(--p) * 0.3 + 16px) 0; /* top and sides leave room for the grey box */
   box-sizing: border-box;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: auto min(32vw, 520px); /* bio column width */
+  grid-template-columns: auto min(28vw, 440px); /* bio column width */
   column-gap: calc(var(--p) * 0.22);
   align-items: center;
   position: relative;
@@ -210,7 +210,7 @@ hr.rule-top {
 
 .name {
   margin: calc(var(--p) * 0.1) 0 0;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.1;
   white-space: nowrap;
@@ -218,7 +218,7 @@ hr.rule-top {
 }
 
 .bio {
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -244,9 +244,9 @@ hr.rule-bio {
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(3, 190px);
+  grid-template-columns: repeat(3, 162px);
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   margin: calc(var(--p) * 0.27 + 64px) auto 0;
 }
 
@@ -254,11 +254,11 @@ hr.rule-bio {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  border: 5px solid var(--c);
+  height: 42px;
+  border: 4px solid var(--c);
   background: #fff;
   color: var(--ink);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   text-decoration: none;
   opacity: 1;
@@ -296,7 +296,7 @@ hr.rule-bio {
 .home .site-footer {
   margin: 56px 0 80px;
   padding: 0 40px;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 /* ---------- Inner pages ---------- */
@@ -588,14 +588,14 @@ hr.rule-bio {
   }
 
   .name {
-    font-size: 24px;
+    font-size: 21px;
   }
 
   .hero-right {
     padding: 28px 36px 32px calc(6vw + 32px);
   }
   .bio {
-    font-size: 17px;
+    font-size: 15px;
   }
   hr.rule-bio {
     margin: 36px 0 0;
@@ -607,13 +607,13 @@ hr.rule-bio {
     margin: 32px 0 0;
   }
   .buttons .button {
-    height: 42px;
+    height: 36px;
     border-width: 3px;
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .home .site-footer {
-    font-size: 16px;
+    font-size: 14px;
     padding: 0 20px;
     margin: 28px 0 40px;
   }
